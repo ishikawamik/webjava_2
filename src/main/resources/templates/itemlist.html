@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>ItemList</title>
+</head>
+<body>
+<!--
+<th:block th:if="${message} != null">
+  <span class="message" th:text="${message}"></span>
+  <br>
+</th:block>
+
+<span class="test" th:text="${test}"></span>
+<br>
+<span class="cartItemNumMessage" th:text="${cartItemNumMessage}"></span>
+<br>
+<span class="speed" th:text="${speed}"></span>
+<br>
+<span class="food" th:text="${food}"></span>
+<span class="cooking" th:text="${cooking}"></span>
+<br>
+<input type="button" onclick="location.href='/cart'"value="購入履歴を見る">
+-->
+<dl>
+<th:block th:each="item: ${items}">
+	<p>以下からご選択ください。</p>
+	<br>
+  <form action="#" th:action="@{/itemlist}" th:object="${listForm}" method="post">
+    <!-- <input type="hidden" name="itemName" th:value="${item.name}" /> -->
+    <input type="hidden" name="itemId" th:value="${item.id}" />
+
+<!--
+    <span th:text="'商品名：' + ${item.name}"></span><br>
+    <span th:text="'価格　：\\' + ${item.price}"></span><br>
+
+    <input type = "radio" name = "num" th:value = "1" th:field="*{num}">1
+	<input type = "radio" name = "num" th:value = "2" th:field="*{num}">2
+	<input type = "radio" name = "num" th:value = "3" th:field="*{num}">3
+	<br>
+	<input type = "radio" name = "num5" value = "name1" th:field="*{itemName}">name1
+	<input type = "radio" name = "num5" value = "name2" th:field="*{itemName}">[[${testDisplay}]]
+	<br>
+-->
+	<input type = "radio" name = "costomer"
+	th:value = "${youngerName}" th:field="*{selectedCostomer}" checked>[[${youngerName}]]
+	<input type = "radio" name = "costomer"
+	th:value = "${elderName}" th:field="*{selectedCostomer}">[[${elderName}]]
+	<br>
+	<input type = "radio" name = "cock"
+	th:value = "${chefName}" th:field="*{selectedCock}" checked>[[${chefName}]]
+	<input type = "radio" name = "cock"
+	th:value = "${itamaeName}" th:field="*{selectedCock}">[[${itamaeName}]]
+    <br>
+    <input type = "radio" name = "food"
+    th:value = "${beefName}" th:field="*{selectedFood}" checked>[[${beefName}]]
+	<input type = "radio" name = "food"
+	th:value = "${porkName}" th:field="*{selectedFood}">[[${porkName}]]
+	<input type = "radio" name = "food"
+	th:value = "${salmonName}" th:field="*{selectedFood}">[[${salmonName}]]
+	<input type = "radio" name = "food"
+	th:value = "${vegetableName}" th:field="*{selectedFood}">[[${vegetableName}]]
+    <br>
+    <br>
+    <input type='submit' value='注文' class='submit'>
+    </form>
+  </th:block>
+</dl>
+<span class="speed" th:text="${speed}"></span>
+<br>
+<span class="food" th:text="${food}"></span>
+<span class="cooking" th:text="${cooking}"></span>
+<br>
+<span class="purchaseNumMessage" th:text="${purchaseNumMessage}"></span>
+<input type="button" onclick="location.href='/cart'"value="購入履歴を見る">
+</body>
+</html>

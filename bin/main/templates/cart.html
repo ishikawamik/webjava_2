@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Cart</title>
+</head>
+<body>
+
+<th:block th:if="${message} != null">
+  <span class="message" th:text="${message}"></span>
+  <br>
+</th:block>
+
+<th:block th:if="${#lists.isEmpty(cart.orderList)}" >
+    <span>カートに商品が入っていません。</span>
+    <br>
+</th:block>
+
+<input type="button" onclick="location.href='/itemlist'"value="戻る">
+<dl>
+</th:block>
+</dl>
+<table>
+	<tr>
+		<th>　</th>
+		<th>　</th>
+		<th>　</th>
+	</tr>
+	<tr th:each = "msg : ${purchase.purchaseList}">
+		<td th:text = "${msg.message.price} + '円の'"></td>
+		<td th:text = "${msg.message.menu} + 'を注文し、'"></td>
+		<td th:text = "${msg.message.speed} + '秒かかりました。'"></td>
+	</tr>
+</table>
+<br>
+<span class="totalPurchasePrice" th:text="${totalPurchasePrice}"></span>
+<br>
+<span class="totalPurchaseSpeed" th:text="${totalPurchaseSpeed}"></span>
+</body>
+</html>
